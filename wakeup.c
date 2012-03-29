@@ -97,6 +97,8 @@ unsigned int send_wakeup(void)
 
 	if(sendto(sock, &wakeup_packet, sizeof(wakeup_packet), 0, res->ai_addr, res->ai_addrlen) == sizeof(wakeup_packet)) {
 		rv = 1;
+	} else {
+		printf("Could not send packet: %s\n", strerror(errno));
 	}
 
 	freeaddrinfo(res);
