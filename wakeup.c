@@ -1,5 +1,9 @@
 
 /*
+ * This software is public domain, and has no express or implied warranty.
+ */
+
+/*
  * Compile:
  * gcc -Wall wakeup.c -o wakeup
  */
