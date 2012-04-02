@@ -41,6 +41,10 @@ void Usage(void)
 	exit(EXIT_FAILURE);
 }
 
+/* TODO: Make the parser more resilient.
+ * It takes a lot of shortcuts and may turn
+ * your computer into a toaster.
+ */
 unsigned int parse_address(uint8_t *mac, const char *str)
 {
 	int x;
