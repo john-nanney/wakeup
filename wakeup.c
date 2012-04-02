@@ -67,6 +67,7 @@ int udp_socket(const char *service)
 	int s = NO_SOCKET;
 	struct addrinfo hints;
 	int sysresult;
+	int one_true = 1;
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_INET6;
@@ -80,6 +81,11 @@ int udp_socket(const char *service)
 	if(sysresult == SYSTEM_SUCCESS) {
 		if((s = socket(res->ai_family, res->ai_socktype, res->ai_protocol)) == NO_SOCKET) {
 			printf("socket() returned %s\n", strerror(errno));
+		} else {
+			if(setsockopt(s, SOL_SOCKET, SO_BROADCAST, &one_true, sizeof(one_true))) {
+				printf("setsockopt(BROADCAST) failed: %s\n", strerror(errno));
+				/* Note that we try to send anyway, just complain noisily here. */
+			}
 		}
 
 	} else {
