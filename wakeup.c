@@ -74,7 +74,7 @@ int udp_socket(const char *service)
 	int one_true = 1;
 
 	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET6;
+	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_DGRAM;
 	hints.ai_flags = (AI_V4MAPPED | AI_ALL);
 
